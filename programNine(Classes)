@@ -1,0 +1,142 @@
+//
+//  main.cpp
+//  programNine
+//
+//  Created by Ryan Saelens on 4/30/20.
+//  Copyright © 2020 Ryan Saelens. All rights reserved.
+//
+
+//Coin Flip Program (Part 2)
+
+#include <iostream>
+#include <iomanip>
+#include <cstdlib>
+#include <cstring>
+
+using namespace std;
+
+class Coin
+{
+    
+    public:
+        Coin(double);
+        Coin();
+        double monVal;
+        void flip();
+        int getSide();
+        double getValue();
+        int coinSide[7];
+        
+};
+
+int main()
+{
+    srand(11);
+    
+    
+    Coin coin1(0.01),
+         coin2(0.05),
+         coin3(0.10),
+         coin4(0.25);
+    
+    const double gameEnd = 1.00;
+    double currentBal = 0.00;
+    
+    cout << "To start, the balance is $0.00" << endl << endl;
+    
+    while(currentBal < gameEnd)
+    {
+        coin1.flip();
+        cout << "Penny:" << setw(10) << ((coin1.getSide() == 1)?"         heads" : "       tails") << endl;
+        
+        if(coin1.getSide() == 1)
+            currentBal += coin1.getValue();
+        
+        coin2.flip();
+        cout << "Nickel:" << setw(10) << ((coin2.getSide() == 1)?"        heads" : "        tails") << endl;
+        
+        if(coin2.getSide() == 1)
+            currentBal += coin2.getValue();
+        
+        coin3.flip();
+        cout << "Dime:" << setw(10) << ((coin3.getSide() == 1)?"          heads" : "        tails") << endl;
+        
+        if(coin3.getSide() == 1)
+            currentBal += coin3.getValue();
+        
+        coin4.flip();
+        cout << "Quarter:" << setw(10) << ((coin4.getSide() == 1)?"       heads" : "        tails") << endl;
+        
+        if(coin4.getSide() == 1)
+            currentBal += coin4.getValue();
+        
+        cout << endl << "After flipping the coins the balance appears to be: " << currentBal;
+        cout << endl << "--------------------------------------------------------" << endl;
+        
+    }
+    if(currentBal == gameEnd)
+        cout << "The final balance is $" << currentBal << ". You won, congrats!";
+    
+    else
+        cout << "The final balance is $" << currentBal << ". You lost! Be sure to try again!";
+    
+    cout << endl;
+    
+    return 0;
+}
+
+//Constructors
+
+Coin::Coin(double initVal)
+{
+    monVal = initVal;
+    flip();
+}
+
+Coin::Coin()
+{
+    monVal = 0.01;
+    flip();
+}
+
+
+//Methods
+
+/**************************************************************************************************
+The flip method does the flipping of the coin so to speak... generates a number between
+1 and 2 and has the overall say in the winning or losing of the flip
+*****************************************************************************************************/
+void Coin::flip()
+{
+    int randVal;
+    randVal = (rand() % 2) + 1;
+    
+    if(randVal == 1)
+        coinSide[6] = 1;
+    else
+        coinSide[6] = 2;
+}
+
+/********************************************************************************************
+The getSide method does the reading, returning an integer value that corresponds
+to the response from the flip method. The returned value will imply a 'heads' or 'tails'
+***********************************************************************************************/
+int Coin::getSide()
+{
+    if(coinSide[6] == 1)
+        return 1;
+    else
+        return 2;
+}
+
+/********************************************************************************************
+The getValue method 'gets' the monetary value of the coin. This method is
+responsible for the addition to the total balance.
+***********************************************************************************************/
+double Coin::getValue()
+{
+    return monVal;
+}
+
+//Goodbye C++
+
