@@ -1,0 +1,326 @@
+//
+//  main.cpp
+//  programEight
+//
+//  Created by Ryan Saelens on 4/25/20.
+//  Copyright © 2020 Ryan Saelens. All rights reserved.
+//
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+class Rectangle
+{
+    private:
+        double width;
+        double length;
+    
+    public:
+    Rectangle();
+        Rectangle(int, int);
+        void setWidth(double);
+        void setLength(double);
+        void setDimensions(int, int);
+        double getWidth() const;
+        double getLength() const;
+        double getArea() const;
+        void getDimensions(int &, int &);
+        void display();
+        bool isSquare();
+        bool isEqual(Rectangle);
+        void draw();
+};
+
+
+
+int main()
+{
+//Create 5 Rectangle objects using the two constructors
+Rectangle rectangle1(10, 32),
+          rectangle2(19, 8),
+          rectangle3,
+          rectangle4(3, 23),
+          rectangle5(3, 23);
+
+
+//Test 1: display ALL the rectangle objects
+cout << "*** Test 1: display all the Rectangle objects ***" << endl << endl;
+
+cout << "Rectangle 1  --  ";
+rectangle1.display();
+
+cout << endl << "Rectangle 2  --  ";
+
+rectangle2.display();
+
+cout << endl << "Rectangle 3  --  ";
+
+rectangle3.display();
+
+cout << endl << "Rectangle 4  --  ";
+
+rectangle4.display();
+
+cout << endl << "Rectangle 5  --  ";
+
+rectangle5.display();
+
+
+//Test 2: display the height of the first rectangle object
+cout << endl << endl << endl
+     << "*** Test 2: display ONLY the height of the first Rectangle object ***"
+     << endl << endl;
+     
+cout << "The height of Rectangle 1 is " << rectangle1.getLength() << endl;
+
+
+//Test 3: display the width of the second rectangle object
+cout << endl << endl << endl
+     << "*** Test 3: display ONLY the width of the second Rectangle object ***"
+     << endl << endl;
+
+cout << "The width of Rectangle 2 is " << rectangle2.getWidth() << endl;
+
+
+//Test 4: getDimensions and setDimensions
+int rectHeight, rectWidth;
+
+cout << endl << endl << endl
+     << "*** Test 4a: get the dimensions of the third Rectangle object ***"
+     << endl << endl;
+
+rectangle3.getDimensions( rectHeight, rectWidth );
+
+cout << "The height of Rectangle 3 is " << rectHeight << endl
+     << "The width of Rectangle 3 is " << rectWidth << endl << endl;
+
+cout << endl << endl << endl
+     << "*** Test 4b: set the dimensions of the third Rectangle object with 17 x 17 ***"
+     << endl << endl;
+
+//Change the dimensions of the 3rd rectangle
+rectangle3.setDimensions(17, 17);
+
+//Retrieve the dimesions of the 3rd rectangle
+rectangle3.getDimensions( rectHeight, rectWidth );
+
+cout << "After changing the dimensions..." << endl << endl
+     << "The height of Rectangle 3 is " << rectHeight << endl
+     << "The width of Rectangle 3 is " << rectWidth << endl << endl;
+
+cout << endl << endl << endl
+     << "*** Test 4c: set the dimensions of the third Rectangle object with -17 x -17 ***"
+     << endl << endl;
+
+//Change the dimensions of the 3rd rectangle with negative numbers
+rectangle3.setDimensions( -17, -17 );
+
+//Retrieve the dimesions of the 3rd rectangle
+rectangle3.getDimensions( rectHeight, rectWidth );
+
+cout << "After changing the dimensions with negative numbers..." << endl << endl
+     << "The height of Rectangle 3 is " << rectHeight << endl
+     << "The width of Rectangle 3 is " << rectWidth << endl << endl;
+
+
+//Test 5: isSquare
+cout << endl << endl << endl
+     << "*** Test 5: are the third and fourth Rectangle objects squares? ***"
+     << endl << endl;
+
+if( rectangle3.isSquare() )
+  cout << "Rectangle 3 is a square." << endl;
+else
+  cout << "Rectangle 3 is NOT a square." << endl;
+
+if( rectangle4.isSquare() )
+  cout << endl << "Rectangle 4 is a square." << endl;
+else
+  cout << endl << "Rectangle 4 is NOT a square." << endl;
+
+
+//Test 6: isEqual
+cout << endl << endl << endl
+     << "*** Test 6a: are the fourth and first Rectangle objects equal? ***"
+     << endl << endl;
+
+if( rectangle4.isEqual( rectangle1) )
+  cout << "Rectangle 4 is equal to Rectangle 1." << endl;
+else
+  cout << "Rectangle 4 is NOT equal to Rectangle 1." << endl;
+
+cout << endl << endl << endl
+     << "*** Test 6b: are the fourth and fifth Rectangle objects equal? ***"
+     << endl << endl;
+  
+if( rectangle4.isEqual( rectangle5) )
+  cout << "Rectangle 4 is equal to Rectangle 5." << endl;
+else
+  cout << "Rectangle 4 is NOT equal to Rectangle 5." << endl;
+
+
+//Test 7: draw
+cout << endl << endl << endl
+     << "*** Test 7: draw the second and fourth Rectangle objects ***"
+     << endl << endl;
+
+cout << "Rectangle 2 object" << endl;
+
+rectangle2.display();
+cout << endl;
+rectangle2.draw();
+
+cout << endl << endl << "Rectangle 4 object" << endl;
+
+rectangle4.display();
+cout << endl;
+rectangle4.draw();
+    
+cout << endl << endl << endl;
+
+return 0;
+}
+
+
+
+//Code the Rectangle constructors and methods after this line
+//**************************************************************
+// setWidth assigns the argument to a private member width.
+//**************************************************************
+
+void Rectangle::setWidth(double w)
+{
+    width = w;
+}
+
+//**************************************************************
+// setLength assigns the argument to a private member length.
+//**************************************************************
+
+void Rectangle::setLength(double len)
+{
+    length = len;
+}
+
+//**************************************************************
+// setDimensions changes dimensions of entered width and hieght
+// sets the width and length to 1 if less than 1
+// otherwise, entered values are considered
+//**************************************************************
+
+void Rectangle::setDimensions(int newWidth, int newLength)
+{
+    if(newWidth < 1)
+        width = 1;
+    else
+        width = newWidth;
+    
+    if(newLength < 1)
+        length = 1;
+    else
+        length = newLength;
+}
+
+//**************************************************************
+// getWidth returns the value in private member width...
+//**************************************************************
+
+ double Rectangle::getWidth() const
+{
+    return width;
+}
+
+//**************************************************************
+// getLength returns the value in private member length...
+//**************************************************************
+
+double Rectangle::getLength() const
+{
+    return length;
+}
+
+//**************************************************************
+// getArea returns the product of width and length...
+//**************************************************************
+
+double Rectangle::getArea() const
+{
+    return width * length;
+}
+
+//**************************************************************
+// getDimensions uses reference angles to back back information
+//**************************************************************
+
+void Rectangle::getDimensions(int &widthRef, int &lengthRef)
+{
+    width = widthRef;
+    length = lengthRef;
+    
+}
+
+//**************************************************************
+// display just displays a rectangles dimensions, no arguements
+//**************************************************************
+
+void Rectangle::display()
+{
+    cout << "Width: " << width << "\t" << "Length: " << length << endl;
+}
+
+//**************************************************************
+// isSquare compares length and width, reuturning true if equal
+//**************************************************************
+
+bool Rectangle::isSquare()
+{
+    if(length == width)
+        return true;
+    else
+        return false;
+}
+
+//**************************************************************
+// isEqual compares length and width of two rectangles
+//**************************************************************
+
+bool Rectangle::isEqual(Rectangle otherRec)
+{
+    if(width == otherRec.width && length == otherRec.length)
+        return true;
+    else
+        return false;
+}
+
+
+//**************************************************************
+// draw literally draws out a rectangle using symbols
+//**************************************************************
+
+
+void Rectangle::draw()
+{
+    for(int i = 0; i < length; i++)
+    {
+        for(int j = 0; j < width; j++)
+        {
+            cout << "*";
+        }
+        cout << endl;
+    }
+
+
+}
+
+//Constructors
+Rectangle::Rectangle(int intWidth , int intLength)
+{
+    setDimensions(intWidth, intLength);
+}
+Rectangle::Rectangle()
+{
+    setDimensions(1, 1);
+}
+
