@@ -1,0 +1,79 @@
+//
+//  main.cpp
+//  programThree
+//
+//  Created by Ryan Saelens on 2/9/20.
+//  Copyright © 2020 Ryan Saelens. All rights reserved.
+//
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    float hourlyWage = 0.00;
+    float grossPay = 0.00;
+    float overTime = 0.00;
+    float netPay = 0.00;
+    float deduction= 0.00;
+    int hoursWorked;
+    int over_time_hours;
+    int firstSet = 0;
+    
+    
+    //Ask user for number of hours worked
+    cout << "Please State the Amount of Hours Worked: ";
+    cin >> hoursWorked;
+    cout << "\n";
+    cout << "Please Enter the Hourly Wage: ";
+    cin >> hourlyWage;
+    cout << "\n";
+    
+    //Gross Pay Decision Statement
+    if (hoursWorked <= 40)
+        grossPay = hoursWorked * hourlyWage;
+    
+    else if (hoursWorked > 40)
+    {
+        firstSet = 40;
+        over_time_hours = hoursWorked - firstSet;
+        overTime = over_time_hours * (hourlyWage * 1.50);
+        grossPay = (firstSet * hourlyWage) + overTime;
+    }
+    
+    
+    //Deduction Decision Statement
+    if (grossPay <= 100.00)
+        deduction = grossPay * .02;
+    
+    else if (grossPay > 100.01 && grossPay <= 500.00)
+        deduction = grossPay * .05;
+    
+    else if (grossPay >= 500.01)
+        deduction = grossPay * .09;
+    
+    
+    netPay = grossPay - deduction;
+        
+    //Table
+    cout << "Wage Calculator\n";
+    cout << "\n";
+    cout << "Hours Worked: " << + "\t" << + hoursWorked;
+    cout <<"\n";
+    cout << "Hourly Wage: " << + "\t" << + hourlyWage;
+    cout << "\n------------------------\n";
+    cout << "\n";
+    cout << "Gross Pay: " << + "\t" << "\t" << + grossPay;
+    cout << "\n";
+    cout << "Deductions: " << + "\t" << + deduction;
+    cout << "\n------------------------\n";
+    cout << "\n";
+    cout << "Net Pay: " << + "\t" << "\t" << + netPay;
+    cout << "\n";
+    
+    return 0;
+
+}
+//Done
