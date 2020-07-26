@@ -1,0 +1,138 @@
+//
+//  main.cpp
+//  programFive
+//
+//  Created by Ryan Saelens on 2/29/20.
+//  Copyright © 2020 Ryan Saelens. All rights reserved.
+//
+
+#include <iostream>
+#include <math.h>
+#include <string>
+
+//VARS
+int firstNum;
+int secNum;
+float num1;
+float num2;
+long int total;
+int factorial = 1;
+char menu[] = {'D', 'F', 'L', 'P', 'Q', 'd', 'f', 'l', 'p', 'q', '\0'};
+char user;
+bool value = false;
+
+
+
+using namespace std;
+int main() {
+    
+    //Top Menu
+    cout << 'D' << + ")" << + "\t" << + "Check if an integer is divisible by another integer" << endl;
+    cout << 'F' << + ")" << + "\t" << + "Find the value of a factorial" << endl;
+    cout << 'L' << + ")" << + "\t" << + "Determine the larger of two integers" << endl;
+    cout << 'P' << + ")" << + "\t" << + "Find M to the Nth power" << endl;
+    cout << "\n";
+    cout << "\n";
+    cout << 'Q' << + ")" << + "\t" << + "Quit" << endl;
+    cout << "\n";
+    
+    //Do While Loop That Will Quit if User types in 'q' or 'Q'
+    do
+    {
+        cout << "\n" << "\n";
+        cout << 'D' << + ")" << + "\t" << + "Check if an integer is divisible by another integer" << endl;
+        cout << 'F' << + ")" << + "\t" << + "Find the value of a factorial" << endl;
+        cout << 'L' << + ")" << + "\t" << + "Determine the larger of two integers" << endl;
+        cout << 'P' << + ")" << + "\t" << + "Find M to the Nth power" << endl;
+        cout << "\n";
+        cout << "\n";
+        cout << 'Q' << + ")" << + "\t" << + "Quit" << endl;
+        cout << "\n";
+        cout << "What would you like to do? ";
+        cin >> user;
+        
+        //Divisibility
+        if(user == menu[0] or user == menu[5])
+        {
+            cout << "\n";
+            cout << "Enter both numbers: " << endl;
+            cin >> firstNum;
+            cin >> secNum;
+            if(firstNum % secNum == 0)
+            {
+                cout << "\n";
+                cout << "The first number " << firstNum << ", is divisible by the second number, " << secNum << endl;
+            }
+            else
+                cout << "The first number " << firstNum << ", is not divisible by the second number, " << secNum << endl;
+        }
+        
+        //Factorial
+        if(user == menu[1] or user == menu[6])
+        {
+            cout << "\n";
+            cout << "Please enter a positive number: ";
+            cin >> firstNum;
+            
+            for(int i = 1; i <= firstNum; i++)
+            {
+                factorial = factorial*i;
+            }
+            
+            cout << "\n";
+            cout << "The factorial of " << firstNum << " is " << factorial << endl;
+        }
+        
+        //Larger of two Integers
+        if(user == menu[2] or user == menu[7])
+        {
+            cout << "\n";
+            cout << "Enter the first number: ";
+            cin >> num1;
+            cout << "Enter the second number: ";
+            cin >> num2;
+
+            cout << "\n";
+
+            if (num1 > num2)
+                cout << "The larger number is " << + num1;
+            else
+                cout << "The larger number is " << num2;
+
+            cout << endl;
+            cout << "\n";
+        }
+        
+        //Raising an Integer to a Power
+        if(user == menu[3] or user == menu[8])
+        {
+            cout << "\n";
+            total = 1;
+            cout << "Enter the base number please: ";
+            cin >> firstNum;
+            cout << "Now enter the exponent: ";
+            cin >> num2;
+            for( int i = 1; i <= num2; i++)
+            {
+                total = total * firstNum;
+            }
+            cout << "\n";
+            cout << firstNum << " to the power of " << num2 << " equals " << total << endl;
+            
+        }
+        
+        //Quit Code Boolean Based
+        if(user == menu[4] or user == menu[9])
+        {
+            cout << "\n";
+            cout << "Now exiting the menu. Goodbye!" << endl;
+            value = true;
+        }
+        
+    } while((value != true));
+    
+    cout << "\n" << endl << "\n" << endl;
+    return 0;
+}
+
+//Heck Yeah!
