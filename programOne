@@ -1,0 +1,45 @@
+//
+//  main.cpp
+//  programOne
+//
+//  Created by Ryan Saelens on 1/24/20.
+//  Copyright © 2020 Ryan Saelens. All rights reserved.
+//
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    // insert code here...
+    
+    double programAvg;
+    double testAvg;
+    double courseAvg;
+    
+    cout << "Please enter the Program Average: ";
+    cin >> programAvg;
+    
+    cout << "Now enter the Test Average: ";
+    cin >> testAvg;
+    
+    cout << "\n";
+    cout << "***********************************" << endl;
+    cout << "\n";
+    cout << "Grade Calculator\n";
+    cout << "\n";
+    
+    cout << "Program Average " << setw(7) << programAvg << endl;
+    cout << "Test Average " << setw(10) << testAvg << endl;
+    cout << "\n";
+    
+    courseAvg = (programAvg * .3) + (testAvg * .7);
+    
+    cout << "Course Average " << setw(18) << courseAvg << endl;
+    cout << "\n";
+    cout << "***********************************" << endl;
+   
+    return 0;
+}
