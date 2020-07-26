@@ -1,0 +1,323 @@
+//
+//  main.cpp
+//  programSix
+//
+//  Created by Ryan Saelens on 3/20/20.
+//  Copyright © 2020 Ryan Saelens. All rights reserved.
+//
+
+
+
+
+#include <iostream>
+#include <math.h>
+#include <string>
+
+
+using namespace std;
+
+//VARS
+int num;
+double mVal;
+double lrg1;
+double lrg2;
+int dividend;
+int divisor;
+double base;
+long int exponent;
+double total;
+int factorial = 1;
+char menu[] = {'D', 'F', 'L', 'P', 'Q', 'd', 'f', 'l', 'p', 'q', '\0'};
+char user;
+bool value = false;
+
+
+//Function Protos
+char mainMenu();
+void isDivisible(int dividend, int divisor);
+int calcFactorial(int number);
+double findLarger(double large1, double large2);
+void MtoN(double user, int user2);
+void quit();
+int getInt(string prompt, int user, int user2);
+double getDouble(string prompt, double user, double user2);
+double MtoN(double valM, long int valN);
+
+int main() {
+    
+    mainMenu();
+    
+    do  //Do While Loop
+    {
+        mainMenu();
+
+    } while((value != true));
+
+    cout << "\n" << endl << "\n" << endl;
+
+    return 0;
+    
+}
+    
+//*************************************************************************************************
+    
+char mainMenu()
+{
+    cout << "\n" << "\n";
+    cout << 'D' << + ")" << + "\t" << + "Check if an integer is divisible by another integer" << endl;
+    cout << 'F' << + ")" << + "\t" << + "Find the value of a factorial" << endl;
+    cout << 'L' << + ")" << + "\t" << + "Determine the larger of two integers" << endl;
+    cout << 'P' << + ")" << + "\t" << + "Find M to the Nth power" << endl;
+    cout << "\n";
+    cout << "\n";
+    cout << 'Q' << + ")" << + "\t" << + "Quit" << endl;
+    cout << "\n" << "\n";
+    cout << "What would you like to do? ";
+    cin >> user;
+    cout << "\n";
+    
+    //Divisibility
+    if(user == menu[0] or user == menu[5])
+    {
+        dividend = getInt("Enter the first number", 1, 100);
+        divisor = getInt("Enter the second number", 1, 100);
+        isDivisible(dividend, divisor);
+    }
+    
+    //Factorial
+    if(user == menu[1] or user == menu[6])
+    {
+        num = getInt("Enter a positive number", 1, 100);
+        calcFactorial(num);
+    }
+    
+    //Larger of two Integers
+    if(user == menu[2] or user == menu[7])
+    {
+        lrg1 = getDouble("Enter the first number", 1.0, 100.0);
+        lrg2 = getDouble("Enter the second number", 1.0, 100.0);
+        findLarger(lrg1, lrg2);
+    }
+    
+    //Raising an Integer to a Power
+    if(user == menu[3] or user == menu[8])
+    {
+        base = getDouble("Enter the base number", 1.0, 100.0);
+        exponent = getInt("Enter the exponent", 1, 100);
+        MtoN(base, exponent);
+    }
+    //Quit Code Boolean Based
+    if(user == menu[4] or user == menu[9])
+        quit();
+    
+    return user;
+}
+
+/*
+Function:  mainMenu()
+
+Use:       This function returns a menu of options for the user to decide from
+
+Arguments: NO ARGUMENTS
+ 
+Return: the input from the user
+*/
+
+//*************************************************************************************************
+
+void isDivisible(int dividend, int divisor)
+{
+    cout << "\n";
+    
+    if(dividend % divisor == 0)
+    {
+        cout << "\n";
+        cout << "The first number " << dividend << ", is divisible by the second number, " << divisor << endl;
+    }
+    else
+        cout << "The first number " << dividend << ", is not divisible by the second number, " << divisor << endl;
+    
+}
+
+/*
+Function:  isDivisible( int dividend, int divisor)
+
+Use:       This function returns a statement, telling the user if the first number entered is divisible by the second or not
+
+Arguments: dividend - the first number to be entered --> the numerator
+           divisor - the second number to be entered --> the denominator
+ 
+*/
+
+//*************************************************************************************************
+
+int calcFactorial(int number)
+{
+    int final = 0;
+    cout << "\n";
+    for(int i = 1; i <= number; ++i)
+    {
+        factorial = factorial*i;
+        final = factorial;
+    }
+    
+    cout << "\n";
+    cout << "The factorial of " << number << " is " << final << endl;
+    
+    return final;
+}
+
+/*
+Function:  calcFactorial(int number)
+
+Use:       This function returns the factorial of an integer specified by the user
+
+Arguments: number - the number that the function find the factorial of, specified by the user
+
+Return: the factorial of the entered number
+*/
+
+//*************************************************************************************************
+
+double findLarger(double large1, double large2)
+{
+    double val;
+    
+    if (large1 > large2)
+    {
+        cout << "The larger number is " << + large1;
+        val = large1;
+    }
+
+    else
+    {
+        cout << "The larger number is " << large2;
+        val = large2;
+    }
+
+    cout << endl;
+    cout << "\n";
+    
+    return val;
+}
+
+/*
+Function:  findLarger(double num1, double num2)
+
+Use:       This function returns the larger of two entered integers
+
+Arguments: num1 - the first number to be compared
+           num2 - the second number to be compared
+
+*/
+
+//*************************************************************************************************
+
+double MtoN(double valM, long int valN)
+{
+    total = 1;
+    for(int i = 1; i <= valN; i++)
+    {
+        total = total * valM;
+    }
+    
+    cout << "\n";
+    cout << valM << " to the power of " << valN << " equals " << total << endl;
+    
+    return total;
+}
+
+/*
+Function:  MtoN(double valM, int valN)
+
+Use:       This function returns a double integer value that is raised to an int exponent value
+
+Arguments: valM - the base number that the user enters and wants to raise to a certain power
+           valN - the number that is the power --> the exponent
+*/
+
+//*************************************************************************************************
+
+void quit()
+{
+    value = true;
+    cout << "\n";
+    cout << "Now exiting the menu. Goodbye!" << endl;
+   
+}
+
+/*
+Function:  quit(bool value)
+
+Use:       This function returns a bool value based on the user character entered
+
+Arguments: value - either true or false based on if the q/Q character is hit or not
+
+*/
+
+//*************************************************************************************************
+
+int getInt(string promptToUser, int lowerBound, int upperBound)
+{
+    do
+    {
+        cout << promptToUser << ", must be between " << lowerBound << " and " << upperBound << "    ";
+        cin >> num;
+        cout << endl << endl;
+         
+        if (num < lowerBound || num > upperBound)
+            cout << "That value is not within the specified range. Please try again!" << endl;
+    }
+    while (num < lowerBound || num > upperBound);
+     
+    return num;
+}
+
+/*
+ Function:  getInt(string promptToUser, int lowerBound, int upperBound)
+ 
+ Use:       This function returns an integer value from the user within the set boundaries
+ 
+ Arguments: promptToUser - a string that represents an instruction given to the user to input information
+            lowerBound - int value representing the lowest value (also the  lowest value the user can enter)
+            upperBound - int value representing the highest value (also the highest value the user can enter)
+ 
+ Return: an integer value within the respected range
+ 
+ NOTE: SAME AS getDouble function but with int return type
+ */
+
+//***********************************************************************************************************
+
+double getDouble(string promptToUser, double lowerBound, double upperBound)
+{
+    do
+    {
+        cout << promptToUser << ", must be between " << lowerBound << " and " << upperBound << "    ";
+        cin >> mVal;
+        cout << endl << endl;
+        
+        if(mVal < lowerBound || mVal > upperBound)
+            cout << "That value is not within the specified range. Please try again!" << endl;
+        
+    }
+    while (mVal < lowerBound || mVal > upperBound);
+    
+    return mVal;
+}
+
+/*
+ Function:  getDouble(string promptToUser, double lowerBound, double upperBound)
+ 
+ Use:       This function returns an double value from the user within the set boundaries
+ 
+ Arguments: promptToUser - a string that represents an instruction given to the user to input information
+            lowerBound - double value representing the lowest value (also the  lowest value the user can enter)
+            upperBound - double value representing the highest value (also the highest value the user can enter)
+ 
+ Return: an double value within the respected range
+ */
+
+//***********************************************************************************************************
+
+//BAMM!
