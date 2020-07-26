@@ -1,0 +1,59 @@
+//
+//  main.cpp
+//  programTwo
+//
+//  Created by Ryan Saelens on 1/31/20.
+//  Copyright © 2020 Ryan Saelens. All rights reserved.
+//
+
+#include <iostream>
+#include <iomanip>
+#include <math.h>
+
+using namespace std;
+
+int main()
+{
+    // insert code here...
+    
+    double programAvg;
+    double testAvg;
+    float courseAvg;
+    
+    int programPoints;
+    const float max_program_points = 900.0;
+    const float test_quiz_points = 400.0;
+    int quizScores;
+    int testScores;
+    
+    cout << "Enter the sum of the program points earned: ";
+    cin >> programPoints;
+    cout << "\n";
+    
+    cout << "Enter the sum of the quizzes: ";
+    cin >> quizScores;
+    cout << "Enter the sum of the tests: ";
+    cin >> testScores;
+    
+    
+    cout << "\n";
+    cout << "***********************************" << endl;
+    cout << "Grade Calculator\n";
+    cout << "\n";
+    
+    programAvg = programPoints / max_program_points * 100.0;
+    testAvg = ((testScores / test_quiz_points) + (quizScores / test_quiz_points)) * 100.0;
+    
+    cout << "Program Average " << setw(10) << programAvg << endl;
+    cout << "Test Average " << setw(13) << testAvg << endl;
+    cout << "\n";
+    
+    courseAvg = (programAvg + testAvg) / 2;
+    
+    cout << "Course Average " << setw(18) << courseAvg << endl;
+    cout << "***********************************" << endl;
+   
+  
+    return 0;
+}
+
