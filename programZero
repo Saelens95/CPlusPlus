@@ -1,0 +1,17 @@
+//  main.cpp
+//  programZero
+//
+//  Created by Ryan Saelens on 1/17/20.
+//  Copyright © 2020 Ryan Saelens. All rights reserved.
+
+//Here Goes Nothin'!
+
+#include <iostream> 
+using namespace std;
+
+int main()
+{
+    cout << "Hello World. Thank you for another day."; //basically, print statement
+    
+    return 0;
+}
