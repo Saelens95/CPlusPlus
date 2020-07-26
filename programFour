@@ -1,0 +1,79 @@
+//
+//  main.cpp
+//  programFour
+//
+//  Created by Ryan Saelens on 2/14/20.
+//  Copyright © 2020 Ryan Saelens. All rights reserved.
+//
+
+#include <iostream>
+#include <iomanip>
+#include <cstdlib>
+
+
+using namespace std;
+
+const int MAX_FIRST = 500;
+const int MAX_SECOND = 300;
+const int MAX_THRID = 100;
+const int setValue1 = 5;
+const int setValue2 = 7;
+const int setValue3 = 8;
+
+int i;
+int num1, num2, num3;
+int rando;
+
+int main()
+{
+    srand(30); //established seed value
+    
+    num1 = rand() % MAX_FIRST + 1; //Random number between 1 and 500
+    cout << "This For Loop Will Generate " << + num1 << + " Values. Hold on to something!" << "\n" << endl;
+    
+    for(i = 1; i <= num1; i++) //For Loop to Display 211 Values
+    {
+        rando = rand();
+        cout << setw(11) << rando;
+        if((i % setValue1) == 0) //If more than 5 Rows basically...
+            cout << endl;
+    }
+    
+    cout << endl;
+    
+    num2 = rand() % MAX_SECOND + 1; //Random Number Between 1 and 300
+    cout << endl << "This While Loop Will Populate " << num2 << + " Values. Don't Be Afraid To Count Them!" << "\n" << endl;
+
+    
+    i = 1;
+    while(i >= 1 && i <= num2) //While Loop with 240 Values
+    {
+        rando = rand();
+        cout << setw(11) << rando;
+        if ((i % setValue2) == 0) //If more than 7 rows, new line, and continue with loop...
+            cout << endl;
+        i++;
+    }
+    
+    num3 = rand() % MAX_THRID + 1; //Random number between 1 and 100
+    cout << "\n";
+    cout << endl << "This Do While Loop Will Execute " << num3 << + " Values. Here we go!" << "\n" << endl;
+    
+    i = 1;
+    do                             //DoWhile Loop with 75 Values
+    {
+        rando = rand();
+        cout << setw(11) << rando;
+        if ((i % setValue3) == 0) //If more than 8 Rows
+                 cout << endl;
+        
+        i++;
+    }
+    while(i >= 1 && i <= num3);
+        
+    cout << "\n";
+    cout << "\n";
+    return 0;
+}
+
+//BAM!!
